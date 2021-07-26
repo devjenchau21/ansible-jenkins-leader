@@ -1,0 +1,40 @@
+
+{
+    "__comments__": "under inline, we download dependencies, Ansible and run it from the machine. Access key and secret key must be passed as parameters on the run command like the example: 'packer build -var 'client_id=client_id' packer_config.json'",
+    "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": ""
+    },
+    "builders": [{
+        "type": "amazon-ebs",
+        "access_key": "{{ user `aws_access_key` }}",
+        "secret_key": "{{ user `aws_secret_key` }}",
+        "region": "us-east-1",
+        "source_ami": "ami-0dc2d3e4c0f9ebd18",
+        "tags": [{"Name": "JenkinsAsCode"}],
+        "instance_type": "t2.medium",
+        "ssh_username": "ec2-user",
+        "ami_name": "packer-jenkins-as-code-{{timestamp}}"
+    }],
+    "provisioners": [{
+        "type": "shell",
+        "inline": [
+            "sudo yum update -y",
+            "sudo yum install -y wget",
+
+            "sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm",
+            "sudo yum install epel-release-latest-7.noarch.rpm -y",
+            "sudo yum update -y",
+
+            "sudo yum install curl vim git unzip python python-devel python-pip openssl ansible -y",
+
+            "sudo git clone https://github.pie.apple.com/jchau4/devsecops-jenkins.git /home/centos/jenkins",
+
+            "sudo ansible-playbook /home/centos/jenkins/site.yml",
+
+            "sleep 30s",
+
+            "sudo bash /home/ubuntu/jenkins/ansible_config/general-test.sh"
+        ]
+    }]
+}

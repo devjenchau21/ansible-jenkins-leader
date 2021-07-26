@@ -1,0 +1,9 @@
+---
+
+- name: Mount EFS volume
+  mount:
+    src: "{{ GLOBAL_EFS_ID}}.efs.{{ GLOBAL_AWS_REGION }}.amazonaws.com:/"
+    path: "{{ efs_default_mount_point_full_path }}"
+    opts: -a -t efs,nfs4 defaults
+    state: mounted
+    fstype: nfs

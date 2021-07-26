@@ -1,0 +1,15 @@
+---
+
+- name: Install AWS Utils to mount EFS
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ centos_packages }}"
+  when: ansible_os_family == "RedHat"
+
+- name: Install AWS Utils to mount EFS
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ debian_packages }}"
+  when: ansible_os_family == "Debian"

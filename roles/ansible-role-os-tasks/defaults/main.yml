@@ -1,0 +1,7 @@
+---
+
+default_instance_timezone: America/Chicago
+
+install_ssm: true
+
+aws_installer_dir: /tmp/aws

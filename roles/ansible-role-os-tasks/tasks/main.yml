@@ -1,0 +1,14 @@
+---
+
+- include_tasks: install_unzip_rhel.yml
+  when: ansible_os_family == "RedHat"
+
+- include_tasks: install_unzip_suse.yml
+  when: ansible_os_family == "Suse"
+
+- name: Check if AWS CLI is available
+  include_tasks: check_aws_cli.yml
+
+- name: Install AWS SSM
+  include_tasks: install_ssm.yml
+  when: install_ssm == true

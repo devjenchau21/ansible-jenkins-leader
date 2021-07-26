@@ -1,0 +1,6 @@
+---
+
+- name: Ensure UNZIP is installed
+  yum:
+    name: unzip
+    state: present

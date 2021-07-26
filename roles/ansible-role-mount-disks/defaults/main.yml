@@ -1,0 +1,14 @@
+---
+
+centos_packages:
+  - "amazon-efs-utils"
+  - "nfs-utils"
+
+debian_packages:
+  - "amazon-efs-utils"
+  - "nfs-common"
+
+efs_default_mount_point_full_path: "/mnt/efs/fs1"
+jenkins_folder_in_efs: "/mnt/JENKINS_HOME"
+fstab_file_full_path: "/etc/fstab"
+efs_conf_file_full_path: "/etc/amazon/efs/efs-utils.conf"

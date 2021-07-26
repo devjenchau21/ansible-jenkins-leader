@@ -1,0 +1,22 @@
+---
+
+- name: Fetch availability zone
+  uri:
+    url: http://169.254.169.254/latest/metadata/placement/availability-zone
+    return_content: yes
+    timeout: 10
+  register: returned_az
+  failed_when: returned_az.content is undefined
+
+- name: Ensure Jenkins folder exists on EFS
+  file:
+    path: "{{ jenkins_folder_in_efs }}"
+    state: directory
+
+- name: Mount EFS volume
+  mount:
+    src: "{{ returned_az.content }}.{{ GLOBAL_EFS_ID }}.efs.{{ GLOBAL_AWS_REGION }}.amazonaws.com:/"
+    path: "{{ jenkins_folder_in_efs }}"
+    opts: -t nfs4 -o vers=4.1
+    state: mounted
+    fstype: nfs

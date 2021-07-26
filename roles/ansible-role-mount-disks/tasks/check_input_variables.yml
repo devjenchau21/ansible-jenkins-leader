@@ -1,0 +1,11 @@
+---
+
+- name: Fail if no EFS ID is found
+  fail:
+    msg: "No EFS ID was found to mount. Please check and try again"
+  when: GLOBAL_EFS_ID is undefined
+
+- name: Fail is no AWS Region is found
+  fail:
+    msg: "No AWS Region was found to mount EFS to. Please check and try again"
+  when: GLOBAL_AWS_REGION is undefined

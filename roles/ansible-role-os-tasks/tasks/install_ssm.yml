@@ -1,0 +1,7 @@
+---
+
+- include_tasks: install_ssm_rhel.yml
+  when: ansible_os_family == "RedHat"
+
+- include_tasks: install_ssm_suse.yml
+  when: ansible_os_family == "Suse"

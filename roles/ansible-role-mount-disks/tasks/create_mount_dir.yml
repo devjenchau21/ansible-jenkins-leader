@@ -1,0 +1,6 @@
+---
+
+- name: Create mount directory
+  file:
+    path: "{{ efs_default_mount_point_full_path }}"
+    state: directory

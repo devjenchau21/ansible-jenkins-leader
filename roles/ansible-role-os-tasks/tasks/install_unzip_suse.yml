@@ -1,0 +1,6 @@
+---
+
+- name: Ensure UNZIP is installed
+  zypper:
+    name: unzip
+    state: present

@@ -1,0 +1,15 @@
+---
+
+- name: Ensure file {{ efs_conf_file_full_path }} exists
+  file:
+    path: "{{ efs_conf_file_full_path }}"
+    state: touch
+
+- name: Add efs configs to file
+  lineinfile:
+    path: "{{ efs_conf_file_full_path }}"
+    line: "{{ item }}"
+    state: present
+  loop:
+    - "[client-info]"
+    - "source=liw"

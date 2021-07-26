@@ -1,0 +1,22 @@
+---
+
+- name: Check input variables
+  include_tasks: check_input_variables.yml
+
+- name: Install required packages
+  include_tasks: install_packages.yml
+
+- name: Create mount directory
+  include_tasks: create_mount_dir.yml
+
+- name: Write config to /etc/fstab
+  include_tasks: write_to_fstab.yml
+
+- name: Create EFS conf file
+  include_tasks: create_efs_conf_file.yml
+
+- name: Mount EFS
+  include_tasks: mount_efs.yml
+
+- name: Reboot instance
+  include_tasks: reboot_instance.yml

@@ -1,0 +1,11 @@
+---
+
+- name: Write configs to {{ fstab_file_full_path }}
+  lineinfile:
+    name: "{{ fstab_file_full_path }}"
+    line: "{{ item }}"
+    state: present
+    insertafter: EOF
+  loop:
+    - "{{ GLOBAL_EFS_ID }}:/ {{ efs_default_mount_point_full_path }} efs tls,_netdev"
+    - "{{ GLOBAL_EFS_ID }}.efs.{{ GLOBAL_AWS_REGION }}.amazonaws.com:/ {{ efs_default_mount_point_full_path }} nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0
