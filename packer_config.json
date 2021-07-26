@@ -28,7 +28,7 @@
 
             "sudo yum install curl vim git unzip python python-devel python-pip openssl ansible -y",
 
-            "sudo git clone https://github.pie.apple.com/jchau4/devsecops-jenkins.git /home/centos/jenkins",
+            "sudo git clone https://github.com/devjenchau21/ansible-jenkins-leader /home/centos/jenkins",
 
             "sudo ansible-playbook /home/centos/jenkins/site.yml",
 
