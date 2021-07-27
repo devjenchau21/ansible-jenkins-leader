@@ -32,9 +32,7 @@
 
             "sudo ansible-playbook /home/centos/jenkins/site.yml",
 
-            "sleep 30s",
-
-            "sudo bash /home/ubuntu/jenkins/ansible_config/general-test.sh"
+            "sleep 30s" 
         ]
     }]
 }
