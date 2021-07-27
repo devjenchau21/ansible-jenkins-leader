@@ -31,6 +31,7 @@ docker__cron_jobs:
     user: "{{ (docker__users | first) | d('root') }}"
 
 docker__package_dependencies:
+  - "apt-get update"
   - "apt-transport-https"
   - "ca-certificates"
   - "cron"
