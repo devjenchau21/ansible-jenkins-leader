@@ -1,11 +1,11 @@
 ---
 # This playbook deploys the whole application stack for a jenkins.
 
-- name: Mount EFS disk
-  become: true
-  hosts: localhost
-  roles:
-    - ansible-role-mount-disks
+# - name: Mount EFS disk
+#   become: true
+#   hosts: localhost
+#   roles:
+#     - ansible-role-mount-disks
 
 - hosts: localhost
   tasks:
@@ -26,16 +26,16 @@
   roles:
     - ansible-role-os-tasks
 
-# - name: Install Docker
-#   become: true
-#   hosts: localhost
-#   roles:
-#     - ansible-role-docker
+- name: Install Docker
+  become: true
+  hosts: localhost
+  roles:
+    - ansible-role-docker
 
-# - name: Install Ansible
-#   hosts: localhost
-#   roles:
-#     - role: ansible-role-install-ansible
+- name: Install Ansible
+  hosts: localhost
+  roles:
+    - role: ansible-role-install-ansible
 
 - name: Install Terraform
   hosts: localhost
