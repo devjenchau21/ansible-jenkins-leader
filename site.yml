@@ -7,11 +7,6 @@
 #   roles:
 #     - ansible-role-mount-disks
 
-# - hosts: localhost
-#   tasks:
-#     - name: installing repo for Java 8 in Ubuntu
-#       apt_repository: repo='ppa:openjdk-r/ppa'
-
 - name: Install Java
   hosts: localhost
   roles:
@@ -26,11 +21,11 @@
   roles:
     - ansible-role-os-tasks
 
-- name: Install Docker
-  become: true
-  hosts: localhost
-  roles:
-    - ansible-role-docker
+# - name: Install Docker
+#   become: true
+#   hosts: localhost
+#   roles:
+#     - ansible-role-docker
 
 - name: Install Ansible
   hosts: localhost
