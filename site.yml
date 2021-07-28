@@ -12,13 +12,13 @@
     - name: installing repo for Java 8 in Ubuntu
       apt_repository: repo='ppa:openjdk-r/ppa'
 
-- name: Install Java 8
+- name: Install Java
   hosts: localhost
   roles:
     - role: ansible-role-java
-      when: "ansible_os_family == 'Debian'"
+      when: "ansible_os_family == 'RedHat'"
       java_packages:
-        - openjdk-8-jdk
+        - java-1.8.0-openjdk
 
 - name: Install SSM Agent and AWS CLI
   become: true
