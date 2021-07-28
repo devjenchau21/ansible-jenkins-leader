@@ -26,16 +26,16 @@
   roles:
     - ansible-role-os-tasks
 
-- name: Install Docker
-  become: true
-  hosts: localhost
-  roles:
-    - ansible-role-docker
+# - name: Install Docker
+#   become: true
+#   hosts: localhost
+#   roles:
+#     - ansible-role-docker
 
-- name: Install Ansible
-  hosts: localhost
-  roles:
-    - role: ansible-role-install-ansible
+# - name: Install Ansible
+#   hosts: localhost
+#   roles:
+#     - role: ansible-role-install-ansible
 
 - name: Install Terraform
   hosts: localhost
