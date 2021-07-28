@@ -1,5 +1,5 @@
 ---
-language: python
+language: python3
 services: docker
 
 env:
@@ -22,7 +22,7 @@ before_install:
 
 install:
   # Install test dependencies.
-  - pip install molecule yamllint ansible-lint docker
+  - pip3 install molecule yamllint ansible-lint docker
 
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
